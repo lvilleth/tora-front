@@ -1,0 +1,60 @@
+{
+    "nodes": [
+      {
+        "key": "0.0",
+        "attributes": {
+          "x": 0,
+          "y": 200,
+          "size": 15,
+          "label": "Casa da Pólvora",
+          "color": "#D8482D",
+          "location": "-7.114234039623047, -34.88473607854765",
+          "duration": 25,
+          "active": false
+        }
+      },
+      {
+        "key": "1.0",
+        "attributes": {
+          "x": 100,
+          "y": 170,
+          "size": 15,
+          "label": "Espaço Energia",
+          "color": "#B30000",
+          "location": "-7.119495048024585, -34.86805859431154",
+          "duration": 25,
+          "active": true
+        }
+      },
+      {
+        "key": "2.0",
+        "attributes": {
+          "x": 70,
+          "y": 155,
+          "size": 15,
+          "label": "Museu do Artesanato Paraibano",
+          "color": "#B30000",
+          "location": "-7.1198824898270425, -34.87209686320039",
+          "duration": 30,
+          "active": true
+        }
+      },
+      {
+        "key": "3.0",
+        "attributes": {
+          "x": 180,
+          "y": 30,
+          "size": 15,
+          "label": "Estação Cabo Branco",
+          "color": "#B30000",
+          "location": "-7.148030631307596, -34.79811025814311",
+          "duration": 60,
+          "active": true
+        }
+      }
+    ],
+    "edges": [
+
+    ]
+  }
+  
