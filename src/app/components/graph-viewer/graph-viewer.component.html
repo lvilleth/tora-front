@@ -2,6 +2,7 @@
     <div  id="container"></div>
 </div>
 <div>
-    <button class="btn-result" (click)="onToggleResult()">Toggle Result</button>
-</div>
 
+<app-form-route (toggleRoute)="onToggleResult($event)" (formSubmit)="calculateRoute($event)"></app-form-route>
+
+</div>

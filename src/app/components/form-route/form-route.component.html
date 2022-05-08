@@ -1,0 +1,20 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="form">
+<ly-grid container spacing="4" style="padding-left: 16px;" [lyAlignItems]="'center'" lyWidth="100%">
+    <ly-grid item col="2 12@XSmall 4@Small">
+        <div [lyMaxWidth]="200">
+            <ly-field appearance="outlined" [lyWidth]="1">
+                <input lyNativeControl type="number" value="120" min="10" step="10" #time formControlName="time">
+                <ly-label>Tempo Disponível</ly-label>
+                <ly-display-with>{{+time.value < 10 ? 10+' minutos': time.value + ' minutos'}}</ly-display-with>
+                <ly-hint>Rota será calculada dentro deste intervalo de tempo</ly-hint>
+            </ly-field>
+        </div>
+    </ly-grid>
+    <ly-grid item col="12@Small">
+        <ly-checkbox [checked]="true" formControlName="showResult" (change)="onToggleRoute()">Exibir Resultado</ly-checkbox>
+    </ly-grid>
+    <ly-grid item col="12" [lyPt]="1">
+        <button ly-button raised bg="primary" type="submit">Calcular</button>
+    </ly-grid>
+</ly-grid>
+</form>

@@ -14,8 +14,6 @@ export class GraphViewerComponent implements OnInit {
 
   graph: Graph = new Graph();
   result:PathResult;
-  private resultOn:boolean = false;
-
 
   constructor(private toraService:ToraService) { }
  
@@ -25,8 +23,14 @@ export class GraphViewerComponent implements OnInit {
     
     this.startPos();
     this.loadGraph();
-    this.result = this.toraService.route({M:120});
-    this.onToggleResult();
+  }
+
+  calculateRoute(input:{time:number, showResult:boolean}) {
+    if(this.result?.path?.length > 0){
+      this.onToggleResult(false);
+    }
+    this.result = this.toraService.route({M:input.time});
+    this.onToggleResult(input.showResult);
   }
 
   loadGraph(){
@@ -70,10 +74,9 @@ export class GraphViewerComponent implements OnInit {
      */
   }
 
-  onToggleResult() {
-    this.resultOn = !this.resultOn;
+  onToggleResult(show:boolean) {
     let color = 'dodgerblue';
-    if(this.resultOn)
+    if(show)
       this.paintGraphResult(this.result, color, color, 4);
     else
       this.paintGraphResult(this.result, undefined, '#B30000')

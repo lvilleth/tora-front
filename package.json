@@ -10,7 +10,9 @@
   },
   "private": true,
   "dependencies": {
+    "@alyle/ui": "13.0.1",
     "@angular/animations": "~13.3.0",
+    "@angular/cdk": "^13.2.5",
     "@angular/common": "~13.3.0",
     "@angular/compiler": "~13.3.0",
     "@angular/core": "~13.3.0",
@@ -19,6 +21,8 @@
     "@angular/platform-browser-dynamic": "~13.3.0",
     "@angular/router": "~13.3.0",
     "graphology": "^0.24.1",
+    "graphology-types": "^0.24.4",
+    "hammerjs": "^2.0.8",
     "rxjs": "~7.5.0",
     "sigma": "^2.3.0",
     "tslib": "^2.3.0",
