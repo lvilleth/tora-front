@@ -5,7 +5,8 @@ class Place {
         public name:string,
         public active:boolean,
         public visitDuration:number,
-        public geo:Geo
+        public geo:Geo,
+        public category:string
     ){}
 
     isOpen(){

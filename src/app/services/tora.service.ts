@@ -32,10 +32,10 @@ export class ToraService {
 
   constructor() { }
 
-  public route({M}:{ M:number }): PathResult {
+  public route({M, cat}:{ M:number, cat:string[] }): PathResult {
     let start = this.graph.getNodeAttributes(START);
     const startLatLong = start.location?.split(' ');
-    let startPlace = new Place(START, START, true, 0, new Geo(startLatLong[0], startLatLong[1]));
+    let startPlace = new Place(START, START, true, 0, new Geo(startLatLong[0], startLatLong[1]), START);
 
     let nextPath = [startPlace];
     let next;
@@ -44,7 +44,7 @@ export class ToraService {
     let n = 2;
     while (n != -1 && n < 30){
       console.log('\n-------------------------\nnextPath', [...nextPath.map(v=> v.name)]);
-      next = this.nextPath(nextPath, M);
+      next = this.nextPath(nextPath, M, cat);
       
       if(limit <= next.maxF || next.maxF < 0){ // no improvement can be made
         n = -1;
@@ -70,8 +70,8 @@ export class ToraService {
     return new PathResult(answer.path, answer.limit);
   }
 
-  private nextPath(path:Place[], limit:number):{path:Place[], maxF:number, minF:number, maxChoice?:Place, minChoice?:Place} {
-    let next: any;
+  private nextPath(path:Place[], limit:number, cat:string[] = []):{path:Place[], maxF:number, minF:number, maxChoice?:Place, minChoice?:Place} {
+    let next: Place | undefined;
     let f;
     let maxF = Number.NEGATIVE_INFINITY;
     let minF = Number.POSITIVE_INFINITY;
@@ -89,6 +89,11 @@ export class ToraService {
       // dont choose places already visited
       if(path.find(p => p.id === neighbor))
         continue
+
+      // filter to only include nodes from allowed categories (empty ignore filter)
+      if(cat.length != 0 && !cat.find(s => s == next?.category)){
+        continue
+      }
     
       f = this.g(next, path, limit) + this.h(next);
 
@@ -150,7 +155,7 @@ export class ToraService {
     graph.forEachNode((node,attr) => {
       let latLong = attr.location?.split(" ");
       const geo = new Geo(latLong[0], latLong[1]);
-      const place = new Place(node, attr.label, attr.active, attr.duration, geo);
+      const place = new Place(node, attr.label, attr.active, attr.duration, geo, attr.category);
       this.places.set(node, place);
     })
 

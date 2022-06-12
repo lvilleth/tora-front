@@ -4,6 +4,7 @@ import { ToraService } from '@app/services/tora.service';
 import Graph from 'graphology';
 import Sigma from 'sigma';
 import data from '../../../data.json';
+import { environment } from 'environments/environment';
 
 @Component({
   selector: 'app-graph-viewer',
@@ -14,22 +15,34 @@ export class GraphViewerComponent implements OnInit {
 
   graph: Graph = new Graph();
   result:PathResult;
+  useRandomWeights:boolean;
+  removeInactive:boolean;
 
   constructor(private toraService:ToraService) { }
  
 
   ngOnInit(): void {
-    this.graph.import(data);
-    
+    this.handleData();
     this.startPos();
     this.loadGraph();
   }
 
-  calculateRoute(input:{time:number, showResult:boolean}) {
+  handleData() {
+    this.graph.import(data);
+    this.useRandomWeights = environment.routes.randomWeights;
+    this.removeInactive = environment.routes.removeInactive;
+
+    if(this.removeInactive){
+      const inactives = data.nodes.filter(x => !x.attributes.active)
+      inactives.forEach(n => this.graph.dropNode(n.key));
+    }
+  }
+
+  calculateRoute(input:{time:number, showResult:boolean, categories:string[]}) {
     if(this.result?.path?.length > 0){
       this.onToggleResult(false);
     }
-    this.result = this.toraService.route({M:input.time});
+    this.result = this.toraService.route({M:input.time, cat:input.categories});
     this.onToggleResult(input.showResult);
   }
 
@@ -50,8 +63,7 @@ export class GraphViewerComponent implements OnInit {
       let value = Math.ceil(Math.random() * 35);
       this.graph.addEdge(startKey, node, { value:value, label:''+value });
     });
-    this.randomWeights();
-    
+    if(this.useRandomWeights) this.randomWeights();
   }
 
   randomWeights(){

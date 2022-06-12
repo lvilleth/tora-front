@@ -10,7 +10,8 @@
           "color": "#D8482D",
           "location": "-7.114234039623047, -34.88473607854765",
           "duration": 25,
-          "active": false
+          "active": false,
+          "category": "Museus"
         }
       },
       {
@@ -23,7 +24,8 @@
           "color": "#B30000",
           "location": "-7.119495048024585, -34.86805859431154",
           "duration": 25,
-          "active": true
+          "active": true,
+          "category": "Museus"
         }
       },
       {
@@ -36,7 +38,8 @@
           "color": "#B30000",
           "location": "-7.1198824898270425, -34.87209686320039",
           "duration": 30,
-          "active": true
+          "active": true,
+          "category":"Museus"
         }
       },
       {
@@ -48,13 +51,158 @@
           "label": "Estação Cabo Branco",
           "color": "#B30000",
           "location": "-7.148030631307596, -34.79811025814311",
+          "duration": 45,
+          "active": true,
+          "category":"Museus"
+        }
+      },
+      {
+        "key": "4.0",
+        "attributes": {
+          "x": 90,
+          "y": 50,
+          "size": 15,
+          "label": "Jardim Botânico",
+          "color": "#B30000",
+          "location": "-7.135514618127685, -34.8603653849645",
           "duration": 60,
-          "active": true
+          "active": true,
+          "category": "Parques"
+        }
+      },
+      {
+        "key": "5.0",
+        "attributes": {
+          "x": 30,
+          "y": 210,
+          "size": 15,
+          "label": "Parque Zoobotânico (Bica)",
+          "color": "#B30000",
+          "location": "-7.114035425196133, -34.87721046011623",
+          "duration": 60,
+          "active": true,
+          "category": "Parques"
         }
       }
     ],
     "edges": [
-
+      {
+        "key":"0.0->1.0",
+        "source":"0.0",
+        "target":"1.0",
+        "attributes":{
+          "value":10,
+          "label":"10"
+        }
+      },
+      {
+        "key":"0.0->2.0",
+        "source":"0.0",
+        "target":"2.0",
+        "attributes":{
+          "value":12,
+          "label":"12"
+        }
+      },
+      {
+        "key":"0.0->3.0",
+        "source":"0.0",
+        "target":"3.0",
+        "attributes":{
+          "value":30,
+          "label":"30"
+        }
+      },
+      {
+        "key":"1.0->2.0",
+        "source":"1.0",
+        "target":"2.0",
+        "attributes":{
+          "value":5,
+          "label":"5"
+        }
+      },
+      {
+        "key":"1.0->3.0",
+        "source":"1.0",
+        "target":"3.0",
+        "attributes":{
+          "value":25,
+          "label":"25"
+        }
+      },
+      {
+        "key":"2.0->3.0",
+        "source":"2.0",
+        "target":"3.0",
+        "attributes":{
+          "value":25,
+          "label":"25"
+        }
+      },
+      {
+        "key":"5.0->2.0",
+        "source":"5.0",
+        "target":"2.0",
+        "attributes":{
+          "value":10,
+          "label":"10"
+        }
+      },
+      {
+        "key":"5.0->1.0",
+        "source":"5.0",
+        "target":"1.0",
+        "attributes":{
+          "value":10,
+          "label":"10"
+        }
+      },
+      {
+        "key":"5.0->3.0",
+        "source":"5.0",
+        "target":"3.0",
+        "attributes":{
+          "value":35,
+          "label":"35"
+        }
+      },
+      {
+        "key":"5.0->4.0",
+        "source":"5.0",
+        "target":"4.0",
+        "attributes":{
+          "value":20,
+          "label":"20"
+        }
+      },
+      {
+        "key":"4.0->3.0",
+        "source":"4.0",
+        "target":"3.0",
+        "attributes":{
+          "value":20,
+          "label":"20"
+        }
+      },
+      {
+        "key":"4.0->2.0",
+        "source":"4.0",
+        "target":"2.0",
+        "attributes":{
+          "value":15,
+          "label":"15"
+        }
+      },
+      {
+        "key":"4.0->1.0",
+        "source":"4.0",
+        "target":"1.0",
+        "attributes":{
+          "value":12,
+          "label":"12"
+        }
+      }
     ]
   }
   

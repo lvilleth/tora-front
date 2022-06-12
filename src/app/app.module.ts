@@ -19,6 +19,7 @@ import { FormRouteComponent } from './components/form-route/form-route.component
 import { LyCheckboxModule } from '@alyle/ui/checkbox';
 import { LyToolbarModule } from '@alyle/ui/toolbar';
 import { LyTypographyModule } from '@alyle/ui/typography';
+import { LySelectModule } from '@alyle/ui/select';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { LyTypographyModule } from '@alyle/ui/typography';
     LyCheckboxModule,
     LyToolbarModule,
     LyTypographyModule,
+    LySelectModule,
   ],
   providers: [StyleRenderer, LyTheme2, { provide: LY_THEME_NAME, useValue: 'minima-light' }, { provide: LY_THEME, useClass: MinimaLight, multi: true }],
   bootstrap: [AppComponent]

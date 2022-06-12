@@ -8,12 +8,17 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 })
 export class FormRouteComponent implements OnInit {
 
+  items:string[] = ['Museus', 'Parques']
+  defaultSelected = this.items;
+  lastSelectedValue = this.defaultSelected;
+
   form:FormGroup = this.fb.group({
     time: ['120', [Validators.min(10), Validators.required]],
     showResult: [true],
+    categories: [[...this.defaultSelected]]
   });
 
-  @Output() formSubmit = new EventEmitter<{time:number, showResult:boolean}>();
+  @Output() formSubmit = new EventEmitter<{time:number, showResult:boolean, categories:string[]}>();
   @Output() toggleRoute = new EventEmitter<boolean>();
 
   constructor(private fb: FormBuilder) {
@@ -30,6 +35,14 @@ export class FormRouteComponent implements OnInit {
 
   onToggleRoute(){
     this.toggleRoute.emit(this.form.value?.showResult)
+  }
+
+  onSelectChange(values:[]){
+    if(values.length == 0) {
+      this.form.controls.categories.patchValue([...this.lastSelectedValue]);
+    } else {
+      this.lastSelectedValue = values;
+    }
   }
 
 }
